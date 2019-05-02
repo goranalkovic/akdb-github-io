@@ -42,6 +42,10 @@ body {
     line-height: 1.8rem;
 }
 
+p {
+    font-size: 1rem;
+}
+
 .header-logo {
     width: 24rem;
     align-self: center;
@@ -236,5 +240,9 @@ nav ul li.active a {
         border-radius: 4px;
         box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
         transform: scale(1);
+    }
+
+    .hide-on-mobile {
+        display: none;
     }
 }
