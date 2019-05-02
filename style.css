@@ -191,6 +191,10 @@ nav ul li.active a {
     margin-right: 5%;
 }
 
+.h-split-left p {
+    font-size: 1rem;
+}
+
 .h-split-right {
    width: 35%;
 }
