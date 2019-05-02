@@ -214,7 +214,7 @@ nav ul li.active a {
     transform: scale(2.5);
 }
 
-@media (max-width: 960px)  {
+@media only screen and (max-width: 1080px)  {
    .h-split {
        display: flex;
        flex-direction: column;
