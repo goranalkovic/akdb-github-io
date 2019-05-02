@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>AK Database</title>
+
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js" type="text/javascript"></script>
+
+    <!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"-->
+    <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"-->
+    <!--            integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"-->
+    <!--            crossorigin="anonymous"></script>-->
+</head>
+<body>
+<img alt="AK Database logo" class="header-logo" src="images/logo/AKDB_color.svg">
+<nav>
+    <ul>
+        <li class="active"><a href="#about">What is AKDB</a></li>
+        <li><a href="#install">Installation</a></li>
+        <li><a href="#build">Building</a></li>
+        <li><a href="#directories">Directories</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="https://github.com/AILab-FOI/akdb">GitHub
+            <div class="rot-45">-></div>
+        </a></li>
+        <li class="nohover">
+            <div class="theme-switcher">
+                <input id="theme-switch" type="checkbox">
+                <label for="theme-switch" id="theme-switch-label">☼</label>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+
+<section class="page-section" id="about">
+    <h1>What is AKDB?</h1>
+    <h2>So, what is it?</h2>
+    <p>
+        AK (Russian: Автомат Калашникова, English: Avtomat Kalasnikova) DB is a simple relational database management
+        system developed by professor Markus Schatten of Faculty of Organization and Informatics in Varaždin, Croatia.
+        It is also regularly developed, maintained and fixed by graduate students attending 'Physical Database Modeling'
+        course every spring.
+    </p>
+    <p>
+        The development started in 2009 and is still ongoing, as building a custom DBMS is not an easy task. Most of it
+        is written in C, with some Python for Server stuff and documentation which is generated automatically and can be
+        viewed in HTML or LaTeX form. More on that in Installation and Build pages.
+    </p>
+    <h2>Where can I find it?</h2>
+    <p>
+        The AKDB System can be found at GitHub and SourceForge, but it is recommended you download it from GitHub, as it
+        is there that it's been maintained for the last couple of years.
+    </p>
+    <p>
+        It is also important to mention that the system is currently in ALPHA development and is <strong>NOT fully
+        functional</strong>!
+    </p>
+    <div class="paragraph-buttons">
+        <a class="a-btn" href="#">Download from GitHub</a>
+        <a class="a-btn" href="#">Download from SourceForge</a>
+    </div>
+</section>
+
+<section class="page-section" id="install">
+    <h1>Installation</h1>
+    <h2>Linux</h2>
+    <p> Originally built for Unix based operating systems, AKDB has a pretty straightforward installation on these
+        systems. To get your AKDB going you need to simply clone the repository and install dependencies, but first you
+        need to install prerequisites:
+    </p>
+
+    <code>sudo apt-get install git build-essential swig make doxygen</code>
+
+    <p>To get Kalasnikov DB you can download .zip file from GitHub on your machine or you can clone it into a directory
+        you've positioned yourself in by using Git command:
+    </p>
+
+    <code>git clone https://github.com/mschatten/akdb
+    </code>
+
+    <p>You can then change the directory to get into the structure:
+    </p>
+
+    <code>cd akdb/akdb/
+    </code>
+
+    <p>Nevermind the multiple akdb directories, it was probably just a bug during migration to GitHub. In the end you
+        should end up in the root directory of the system.
+    </p>
+
+    <p>Next thing you do is install dependencies (Python 2.7), if you don't have them already:
+    </p>
+
+    <code>sudo apt-get install python2.7
+    </code>
+
+    <p>You can also set up a virtual environment for the system. To do that, install <code>virtualenv</code> via pip and
+        run</p>
+
+    <code>virtualenv -p /usr/bin/python2.7 venv</code>
+
+    <p>
+        into your project folder. You can do this with any Python interpreter of your choice.
+    </p>
+
+    <p>
+        To use it, this environment needs to be activated with <code>source venv/bin/activate</code> and deactivated
+        with command <code>deactivate</code>.
+    </p>
+
+    <h2>Mac</h2>
+
+    <p>
+        <strong style="color: var(--body-text-light)">[UNTESTED]</strong> Everything from the <i><b>Linux</b></i>
+        instructions <i>should</i> work. Please let us know on GitHub if it doesn't.
+    </p>
+
+    <h2>Windows</h2>
+
+    <p>Windows 10 introduced <b>Windows Subsystem for Linux</b> (WSL) in 2016, which enables running instances of Linux
+        distributions on Windows. Running instances can use their file system (hosted on the Windows partition) or they
+        can access existing Windows files, that can make some things easier.</p>
+
+    <h3>Enabling and configuring WSL</h3>
+
+    <b>Prerequisites:</b>
+
+    <ul>
+        <li>Windows 10 version 1703 (April 2018 update) or later <br> (May 2019 update (1903) recommended, it has a lot
+            of console improvements, especially for WSL).
+        </li>
+        <li>about 500MB of disk space</li>
+        <li>administrator rights (for installation)</li>
+    </ul>
+
+    <p>
+        <i style="color: var(--body-text-light);">Click and hold images to zoom in.</i>
+    </p>
+
+    <div class="h-split">
+        <div class="h-split-left">
+            <h4>Step 1</h4>
+
+            <p>Click on the
+                <svg class="inline-icon" height="100%" viewBox="0 0 1024 1024" width="100%"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1024,341.5C1024,372.833 1019.92,403.083 1011.75,432.25C1003.58,461.417 992.083,488.583 977.25,513.75C962.417,538.917 944.667,561.917 924,582.75C903.333,603.583 880.333,621.333 855,636C829.667,650.667 802.417,662.083 773.25,670.25C744.083,678.417 713.833,682.5 682.5,682.5C644.5,682.5 607.667,676.417 572,664.25C536.333,652.083 503.5,634.333 473.5,611L73,1011.5C64.6667,1019.83 54.5,1024 42.5,1024C30.8333,1024 20.8333,1019.83 12.5,1011.5C4.16667,1003.17 0,993.167 0,981.5C0,975.833 1.08333,970.333 3.25,965C5.41667,959.667 8.5,955 12.5,951L413,550.5C389.667,520.5 371.917,487.667 359.75,452C347.583,416.333 341.5,379.5 341.5,341.5C341.5,310.167 345.583,279.917 353.75,250.75C361.917,221.583 373.333,194.333 388,169C402.667,143.667 420.417,120.667 441.25,100C462.083,79.3334 485.083,61.5834 510.25,46.75C535.417,31.9167 562.583,20.4167 591.75,12.25C620.917,4.08337 651.167,0 682.5,0C713.833,0 744.083,4.08337 773.25,12.25C802.417,20.4167 829.667,31.9167 855,46.75C880.333,61.5834 903.333,79.3334 924,100C944.667,120.667 962.417,143.667 977.25,169C992.083,194.333 1003.58,221.583 1011.75,250.75C1019.92,279.917 1024,310.167 1024,341.5ZM682.5,597.5C717.833,597.5 751,590.75 782,577.25C813,563.75 840.083,545.417 863.25,522.25C886.417,499.083 904.75,472 918.25,441C931.75,410 938.5,376.833 938.5,341.5C938.5,306.167 931.833,272.917 918.5,241.75C905.167,210.583 886.917,183.417 863.75,160.25C840.583,137.083 813.417,118.833 782.25,105.5C751.083,92.1667 717.833,85.5 682.5,85.5C647.167,85.5 614,92.25 583,105.75C552,119.25 524.917,137.583 501.75,160.75C478.583,183.917 460.25,211 446.75,242C433.25,273 426.5,306.167 426.5,341.5C426.5,376.833 433.25,410 446.75,441C460.25,472 478.583,499.083 501.75,522.25C524.917,545.417 552,563.75 583,577.25C614,590.75 647.167,597.5 682.5,597.5Z">
+                    </path>
+                </svg>
+                <b>search button</b> (or search box if it's enabled) or press the
+                <svg class="inline-icon-shifted" height="24"
+                     version="1.1"
+                     viewBox="0 0 24 24"
+                     width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"></path>
+                </svg>
+                Windows key and start typing.
+            </p>
+
+            <p>Search for <code class="highlighted-code">turn windows</code>, you should see and click on <b>Turn
+                Windows features on or
+                off</b>.</p>
+        </div>
+        <div class="h-split-right">
+            <img alt="Search box" src="images/windows/1.png">
+        </div>
+    </div>
+
+    <div class="h-split">
+        <div class="h-split-left">
+            <h4>Step 2</h4>
+
+            <p>
+                In the list that appears scroll down until you find <b>Windows Subsystem for Linux</b>.</p>
+
+            <p>
+                <svg class="inline-icon" height="100%" viewBox="0 0 1024 1024" width="100%"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1024,0L1024,1024L0,1024L0,0ZM960,64L64,64L64,960L960,960ZM384,813.5L169.5,598.5L214.5,553.5L384,722.5L809.5,297.5L854.5,342.5Z">
+                    </path>
+                </svg>
+                Check it and click <b>OK</b>.
+                Wait for the feature to be enabled and after it finishes restart your computer.
+            </p>
+        </div>
+        <div class="h-split-right">
+            <img alt="Search box" src="images/windows/2.png">
+        </div>
+    </div>
+
+    <div class="h-split">
+        <div class="h-split-left">
+            <h4>Step 3</h4>
+
+            <p>
+                Open the <b>Microsoft Store</b> app. In the search box type <code class="highlighted-code">linux</code>.
+                Select <i>Run Linux on Windows</i>.
+            </p>
+
+            <p>Pick a distribution and click <b>Get</b>. Wait for everything to install (download should be about
+                200-250MB).</p>
+        </div>
+        <div class="h-split-right">
+            <img alt="Search box" src="images/windows/3.png">
+            <img alt="Search box" src="images/windows/4.png">
+            <img alt="Search box" src="images/windows/5.png">
+        </div>
+    </div>
+
+    <div class="h-split">
+        <div class="h-split-left">
+            <h4>Step 4</h4>
+
+            <p>
+                Open <b>PowerShell</b> as an administrator. Easiest way is to right-click on the
+                <svg class="inline-icon-shifted" height="24"
+                     version="1.1"
+                     viewBox="0 0 24 24"
+                     width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"></path>
+                </svg>
+                Windows button in the bottom-left, and then clicking on <b>Windows PowerShell (Admin)</b>.
+            </p>
+
+            <p>
+                Type in a command to initialize the WSL installation (depends on the distribution, check the Store
+                listing), eg. <code class="highlighted-code">ubuntu</code> for Ubuntu or <code class="highlighted-code">opensuse-42</code>
+                for openSUSE.
+            </p>
+
+            <p>You can now run Linux on your Windows device! <i>Hooray!</i></p>
+        </div>
+        <div class="h-split-right">
+            <img alt="Search box" src="images/windows/7.png">
+            <img alt="Search box" src="images/windows/8.png">
+        </div>
+    </div>
+
+    <div class="h-split">
+        <div class="h-split-left">
+            <h4>Step 5</h4>
+
+            <p>
+                Follow the guide for <i>Linux</i>.
+            </p>
+            <p>
+                You might need to install some dependencies like <i>LaTeX</i> for everything to work without warnings or
+                errors.
+            </p>
+        </div>
+    </div>
+
+    <div class="h-split">
+        <div class="h-split-left">
+            <h4><i>WSL tip</i></h4>
+
+            <p>
+                After you close the PowerShell window, you can bring back the Linux terminal by typing <code
+                    class="highlighted-code">bash</code> in the search bar, the <i>Run</i> dialog or by Shift-right
+                clicking in
+                <svg class="inline-icon" height="100%" viewBox="0 0 1024 896" width="100%"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1024,832L832,832L832,896L640,896L640,832L384,832L384,896L192,896L192,832L0,832L0,64C0,55 1.66667,46.6667 5,39C8.33333,31.3334 12.9167,24.5834 18.75,18.75C24.5833,12.9167 31.3333,8.33337 39,5C46.6667,1.66675 55,6.10352e-005 64,0L304,0C319,6.10352e-005 331.917,1.58337 342.75,4.75C353.583,7.91669 363.25,11.8334 371.75,16.5C380.25,21.1667 387.833,26.3334 394.5,32C401.167,37.6668 407.917,42.8334 414.75,47.5C421.583,52.1667 428.917,56.0834 436.75,59.25C444.583,62.4167 453.667,64 464,64L960,64C969,64 977.333,65.6667 985,69C992.667,72.3334 999.417,76.9167 1005.25,82.75C1011.08,88.5834 1015.67,95.3334 1019,103C1022.33,110.667 1024,119 1024,128ZM64,64L64,128L304,128C312,128 319,127.25 325,125.75C331,124.25 336.5,122.083 341.5,119.25C346.5,116.417 351.417,113.083 356.25,109.25C361.083,105.417 366.333,101 372,96C366.333,91.0001 361.083,86.5834 356.25,82.75C351.417,78.9167 346.5,75.5834 341.5,72.75C336.5,69.9167 331,67.75 325,66.25C319,64.75 312,64 304,64ZM640,768L640,640L384,640L384,768ZM768,832L768,544C768,535.333 764.833,527.833 758.5,521.5C752.167,515.167 744.667,512 736,512L288,512C279.333,512 271.833,515.167 265.5,521.5C259.167,527.833 256,535.333 256,544L256,832L320,832L320,576L704,576L704,832ZM960,128L464,128C453.667,128 444.583,129.583 436.75,132.75C428.917,135.917 421.583,139.833 414.75,144.5C407.917,149.167 401.083,154.333 394.25,160C387.417,165.667 379.833,170.833 371.5,175.5C363.167,180.167 353.583,184.083 342.75,187.25C331.917,190.417 319,192 304,192L64,192L64,768L192,768L192,544C192,530.667 194.5,518.167 199.5,506.5C204.5,494.833 211.333,484.667 220,476C228.667,467.333 238.833,460.5 250.5,455.5C262.167,450.5 274.667,448 288,448L736,448C749.333,448 761.833,450.5 773.5,455.5C785.167,460.5 795.333,467.333 804,476C812.667,484.667 819.5,494.833 824.5,506.5C829.5,518.167 832,530.667 832,544L832,768L960,768Z">
+                    </path>
+                </svg>
+                File Explorer then clicking on <b>Open Linux shell here</b>, which will launch a bash shell with the
+                location set to the current folder.
+            </p>
+        </div>
+        <div class="h-split-right">
+            <img alt="Search box" src="images/windows/9.png">
+        </div>
+    </div>
+
+</section>
+
+<section class="page-section" id="build">
+    <h1>Building</h1>
+</section>
+
+<section class="page-section" id="directories">
+    <h1>List of directories</h1>
+</section>
+
+<section class="page-section" id="testing">
+    <h1>Testing</h1>
+</section>
+</body>
+</html>
