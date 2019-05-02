@@ -214,7 +214,7 @@ nav ul li.active a {
     transform: scale(2.5);
 }
 
-@media (max-width: 960px) or (min-resolution: 120dpi) {
+@media (max-width: 960px)  {
    .h-split {
        display: flex;
        flex-direction: column;
@@ -230,5 +230,9 @@ nav ul li.active a {
 
     .page-section {
         margin: 1rem 8vw 10rem;
+    }
+
+    body {
+        background: lightgreen;
     }
 }
