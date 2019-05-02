@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<nav>
-    <img alt="AK Database logo" class="header-logo" src="images/logo/AKDB_color.svg">
+<nav id="nav-menu">
+    <img id="nav-logo" alt="AK Database logo" class="header-logo" src="images/logo/AKDB_color.svg">
 
     <ul>
         <li><a href="#about">What is AKDB</a></li>
@@ -29,7 +29,6 @@
         </li>
     </ul>
 </nav>
-
 
 <section class="page-section" id="about">
     <h1>What is AKDB?</h1>
@@ -271,18 +270,267 @@
         </div>
     </div>
 
+    <h2>Docker (Windows, Mac, Linux)</h2>
+
+    <p>You can get a Docker image that enables you to run AKDB inside Docker container without the need for a Linux
+        virtual machine or WSL.
+    </p>
+
+    <p>Requirements for this are Docker and Make, which you have to install on your local machine. All other
+        prerequisites will be downloaded and installed automatically.
+    </p>
+
+    <p>
+        You also need to install Docker container and this will take some time, but it allows you to develop the
+        application in your native environment and then compile and test its code inside the container. For building
+        AKDB in Docker container please visit <b>Build</b> section.
+    </p>
+
+    <p>
+        It is also required of <b>Windows</b> users to turn on drive sharing in Docker settings. To do that open Docker
+        settings, go to <i>shared drives</i>, check the drive on which AKDB is located and click <b>Apply</b>.
+    </p>
+
+    <div class="paragraph-buttons">
+        <a class="a-btn" href="https://www.docker.com">Get Docker</a>
+        <a class="a-btn" href="https://www.gnu.org/software/make/">Get Make</a>
+    </div>
 </section>
 
 <section class="page-section" id="build">
     <h1>Building</h1>
+
+    <h2>Native</h2>
+
+    <p>
+        After you've installed everything system needs to run you can now build the application. To do this you need to position yourself into the <code class="highlighted-code">src</code> directory and execute:
+    </p>
+
+    <code>make</code><br>
+    <code>make doc</code><br>
+    <code>make swig</code><br>
+
+    <p>
+        This will compile and build the application, along with creating documentation in Doxygen and connecting C with Python using SWIG. To view documentation go to the <code class="highlighted-code">doc</code> directory and open a PDF document called <code class="highlighted-code">refman.pdf</code>.
+    </p>
+
+    <p>
+        To run AKDB position yourself into the <code class="highlighted-code">bin</code> directory and execute:
+    </p>
+
+    <code>./akdb</code>
+
+    <p>
+        This will initialize disk manager and prepare all tests. To see additional commands type:
+    </p>
+
+    <code>./akdb help</code>
+
+    <p>
+        You can see other currently available options are testing options, and will be explained in the testing section. If you want to clean the project of files generated during compiling run this:
+    </p>
+
+    <code>make clean</code><br>
+    <code>make clean-d</code>
+
+    <p>To see if there are some leftover Croatian comments in the code:</p>
+
+    <code>make comments</code>
+
+    <p>As it was said before, the application is <b>not yet functional</b>, so this is currently used for developing and testing purposes.</p>
+
+    <h2>Docker</h2>
+
+    <p>
+        After you've installed Docker and Make you can start the Docker container with AKDB and its host directory will be automatically mapped in the container directory. This means that all the changes you make on your machine are automatically seen and saved inside the container.
+    </p>
+
+    <p>
+        For more information examine the <i>Dockerfile</i> in the <code class="highlighted-code">root</code> directory. To install Docker execute command:
+    </p>
+
+    <code>make docker-install</code>
+
+    <p>If you're running on Windows enter:</p>
+
+    <code>make docker-win</code>
+
+    <p>If you're running on Mac enter:</p>
+
+    <code>make docker-mac</code>
+
+    <br><br>
+
+    <p>All other commands for starting the application and performing tests are the same like in a native environment.</p>
+
 </section>
 
 <section class="page-section" id="directories">
-    <h1>List of directories</h1>
+    <h1>Directories</h1>
+
+    <p>
+        AKDB system root directory consists of three folders and two files. Files contained within this directory are LICENSE file (contains the GNU General Public Licence) and a README file which in short describes installation and building of the application. Folders in the root directory and their purpose be explained next.
+    </p>
+
+    <h2>Binaries (bin)</h2>
+
+    <p>
+        Essential folder where the application compiles to and from where you can run it. It contains several files and another folder called <code class="highlighted-code">blobs</code> where all binary files are stored after running. The <code class="highlighted-code">blob</code> folder is created empty, and is created after the application is installed and started for the first time. Files in the <code class="highlighted-code">bin</code> folder are:
+    </p>
+
+    <ul>
+        <li><code>akdb</code><br>the main executable for AKDB</li>
+        <li><code>config</code><br>configuration file with the default settings</li>
+        <li><code>kalasnikov</code><br>database file created when running for the first time</li>
+        <li><code>tests</code><br>shell script for listing tests</li>
+    </ul>
+
+    <h2>Documentation (doc)</h2>
+
+    <p>
+        Documentation for AKDB is created using <b>Doxygen</b>. It's a tool that generates documentation from comments in the source code.
+        The end result is a reference manual in PDF format. Doxygen can create this in HTML or LaTeX format.
+    </p>
+
+    <p>
+        In this folder there are two additional folders. The <code class="highlighted-code">HTML</code> folder contains the HTML and JS elements used for creation of the web version of the manual while the <code class="highlighted-code">LaTeX</code> folder contains <i>TeX</i> elements for creating PDF and RTF manuals.
+    </p>
+
+    <p>
+        A lengthy AKDB reference manual in the PDF format called <code class="highlighted-code"><b>refman</b></code> is located in the <code class="highlighted-code">doc</code> folder. It's highly recommended that you study it if you want to get a better insight into the system.
+    </p>
+
+    <h2>Source (src)</h2>
+
+    <p>
+        This folder containts the main source code for compiling and building the application. It has files required to start building process and subfolders where the source code files are located.
+    </p>
+
+    <p>
+        Most of the source code files are written in C, expect Server and SWIG files which are written in Python and shell scripts.
+    </p>
+
+    <p>
+        Files in source directory are:
+    </p>
+
+    <ul>
+        <li><code>build</code><br>cleans installation directory and compiles the application</li>
+        <li><code>doxygen</code><br>configuration file with settings for Doxygen</li>
+        <li><code>main</code><br>source code that starts the application and its components</li>
+        <li><code>main.d</code> <i>and</i> <code>main.o</code><br>dictionary and object help files</li>
+        <li><code>Makefile</code><br>configuration paramaters for application building</li>
+        <li><code>projectDetails</code><br>header that contains application version number</li>
+    </ul>
+
+    <br><br>
+
+    <table class="custom-table custom-table-fullwidth">
+        <tr>
+            <th>Folder</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Auxiliary (<code>auxi</code>)</td>
+            <td>Debugger, Type converter, Constants, Dictionary, Parser, Memory Programmer, Observer, Test reporting</td>
+        </tr>
+        <tr>
+            <td>Disk manager (<code>dm</code>)</td>
+            <td>Source code for managing database and its objects on hard disk</td>
+        </tr>
+        <tr>
+            <td>File manager (<code>file</code>)</td>
+            <td>Database indexes (<code>bitmap</code>, <code>btree</code>, <code>hash</code>, <code>regular</code>), <code>blob</code> management, File input and output, File search, File sorting, File identification, Table managment, Sequences, File manager testing</td>
+        </tr>
+        <tr>
+            <td>HTML (<code>html_files</code>)</td>
+            <td>Header and footer for Doxygen in HTML (includes CSS and JS scripts)</td>
+        </tr>
+        <tr>
+            <td>Memory Manager (<code>mm</code>)</td>
+            <td>Utility that manages memory allocation and deallocation in database operation</td>
+        </tr>
+        <tr>
+            <td>Optimization (<code>opti</code>)</td>
+            <td>Query optimization, Relational operations optimization (association, comutation, projection, selection)</td>
+        </tr>
+        <tr>
+            <td>Recovery (<code>rec</code>)</td>
+            <td>Archive and redo log manager, Recovery tools for system crash, Database log in textual and binary form</td>
+        </tr>
+        <tr>
+            <td>Relational algebra (<code>rel</code>)</td>
+            <td>Operations that are used in queries and are essential for database functionality (aggregation, difference, expression check, intersect, natural Join, product, projection, selection, theta join, union)</td>
+        </tr>
+        <tr>
+            <td>SQL commands (<code>sql</code>)</td>
+            <td>Responsible for executing SQL commands (<code>COMMAND</code>, <code>DROP</code>, <code>FUNCTION</code>, <code>PRIVILEGES</code>, <code>SELECT</code>, <code>TRIGGER</code>, <code>VIEW</code>, <code>BETWEEN</code>, <code>CHECK</code>, <code>CONSTRAINTS</code>, <code>NOT NULL</code>, <code>REFERENCE</code>, <code>UNIQUE</code>)</td>
+        </tr>
+        <tr>
+            <td>Server (<code>sql</code>)</td>
+            <td>Client and Server source code (running and configuration), SQL executor</td>
+        </tr>
+        <tr>
+            <td>SWIG (<code>sql</code>)</td>
+            <td>Wrapper files for integration of C with Python in SWIG tool (includes configuration and test)</td>
+        </tr>
+        <tr>
+            <td>Shell tools (<code>tools</code>)</td>
+            <td>Generation comments, file fetching, C and Pythin parsing, application updating</td>
+        </tr>
+        <tr>
+            <td>Transactions (<code>trans</code>)</td>
+            <td>Source code for performing transactions in the database</td>
+        </tr>
+    </table>
+
 </section>
 
 <section class="page-section" id="testing">
     <h1>Testing</h1>
+
+    <p>
+        Since the project is still in development, tests are required to ensure its stability and functionality. There are couple of dozen tests that check whether certain parts of the application work correctly.
+    </p>
+
+    <p>After you've built the application, to run all tests simultaneously enter the command:</p>
+
+    <code>
+        ./akdb alltest
+    </code>
+
+    <p>
+        On first use DB file will be initialized. In case it hangs press 1 and Enter (don't ask why). It also is not unusual for program to crash while running certain tests, because there are still some unfixed bugs that can cause system failure, but most tests work.
+    </p>
+
+    <p>
+        To view what current tests are available, run the following:
+    </p>
+
+    <code>./akdb test show</code>
+
+    <p>
+        This will write out the list of current tests that can be performed.
+        As of 21<sup>st</sup> of March 2018 they are numbered and divided into few categories:
+    </p>
+
+    <h2>Auxiliary tests</h2>
+
+    <table class="custom-table">
+        <tr>
+            <td>1</td>
+            <td>Trajan</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Observable</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Observable pattern</td>
+        </tr>
+    </table>
+
 </section>
 </body>
 </html>
