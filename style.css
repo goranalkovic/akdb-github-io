@@ -212,6 +212,10 @@ nav ul li.active a {
     margin-top: 4.5rem;
 }
 
+.h-split-right img:not(:last-of-type) {
+    margin-bottom: 0.6rem;
+}
+
 .h-split-right img:active {
     border-radius: 2px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
