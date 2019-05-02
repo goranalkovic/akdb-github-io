@@ -191,10 +191,6 @@ nav ul li.active a {
     margin-right: 5%;
 }
 
-.h-split-left p {
-    font-size: 1rem;
-}
-
 .h-split-right {
    width: 35%;
 }
@@ -216,4 +212,23 @@ nav ul li.active a {
     border-radius: 2px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
     transform: scale(2.5);
+}
+
+@media (max-width: 840px) {
+   .h-split {
+       display: flex;
+       flex-direction: column;
+   }
+    .h-split-left {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .h-split-right {
+        width: 100%;
+    }
+
+    .page-section {
+        margin: 1rem 8vw 10rem;
+    }
 }
