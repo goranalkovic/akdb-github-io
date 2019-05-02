@@ -10,10 +10,10 @@
 <body>
 
 <nav id="nav-menu">
-    <img id="nav-logo" alt="AK Database logo" class="header-logo" src="images/logo/AKDB_color.svg">
+    <img alt="AK Database logo" class="header-logo" id="nav-logo" src="images/logo/AKDB_color.svg">
 
     <ul>
-        <li><a href="#about">What is AKDB</a></li>
+        <li><a class="active" href="#about">About AKDB</a></li>
         <li><a href="#install">Installation</a></li>
         <li><a href="#build">Building</a></li>
         <li><a href="#directories">Directories</a></li>
@@ -21,12 +21,6 @@
         <li><a href="https://github.com/AILab-FOI/akdb">GitHub
             <div class="rot-45">-></div>
         </a></li>
-        <li class="nohover">
-            <div class="theme-switcher">
-                <input id="theme-switch" type="checkbox">
-                <label for="theme-switch" id="theme-switch-label">☼</label>
-            </div>
-        </li>
     </ul>
 </nav>
 
@@ -54,8 +48,8 @@
         functional</strong>!
     </p>
     <div class="paragraph-buttons">
-        <a class="a-btn" href="#">Download from GitHub</a>
-        <a class="a-btn" href="#">Download from SourceForge</a>
+        <a class="a-btn" href="#">Download from GitHub <div class="rot-45">-></div></a>
+        <a class="a-btn" href="#">Download from SourceForge <div class="rot-45">-></div></a>
     </div>
 </section>
 
@@ -292,8 +286,8 @@
     </p>
 
     <div class="paragraph-buttons">
-        <a class="a-btn" href="https://www.docker.com">Get Docker</a>
-        <a class="a-btn" href="https://www.gnu.org/software/make/">Get Make</a>
+        <a class="a-btn" href="https://www.docker.com">Get Docker <div class="rot-45">-></div></a>
+        <a class="a-btn" href="https://www.gnu.org/software/make/">Get Make <div class="rot-45">-></div></a>
     </div>
 </section>
 
@@ -303,7 +297,8 @@
     <h2>Native</h2>
 
     <p>
-        After you've installed everything system needs to run you can now build the application. To do this you need to position yourself into the <code class="highlighted-code">src</code> directory and execute:
+        After you've installed everything system needs to run you can now build the application. To do this you need to
+        position yourself into the <code class="highlighted-code">src</code> directory and execute:
     </p>
 
     <code>make</code><br>
@@ -311,7 +306,9 @@
     <code>make swig</code><br>
 
     <p>
-        This will compile and build the application, along with creating documentation in Doxygen and connecting C with Python using SWIG. To view documentation go to the <code class="highlighted-code">doc</code> directory and open a PDF document called <code class="highlighted-code">refman.pdf</code>.
+        This will compile and build the application, along with creating documentation in Doxygen and connecting C with
+        Python using SWIG. To view documentation go to the <code class="highlighted-code">doc</code> directory and open
+        a PDF document called <code class="highlighted-code">refman.pdf</code>.
     </p>
 
     <p>
@@ -327,7 +324,8 @@
     <code>./akdb help</code>
 
     <p>
-        You can see other currently available options are testing options, and will be explained in the testing section. If you want to clean the project of files generated during compiling run this:
+        You can see other currently available options are testing options, and will be explained in the testing section.
+        If you want to clean the project of files generated during compiling run this:
     </p>
 
     <code>make clean</code><br>
@@ -337,16 +335,20 @@
 
     <code>make comments</code>
 
-    <p>As it was said before, the application is <b>not yet functional</b>, so this is currently used for developing and testing purposes.</p>
+    <p>As it was said before, the application is <b>not yet functional</b>, so this is currently used for developing and
+        testing purposes.</p>
 
     <h2>Docker</h2>
 
     <p>
-        After you've installed Docker and Make you can start the Docker container with AKDB and its host directory will be automatically mapped in the container directory. This means that all the changes you make on your machine are automatically seen and saved inside the container.
+        After you've installed Docker and Make you can start the Docker container with AKDB and its host directory will
+        be automatically mapped in the container directory. This means that all the changes you make on your machine are
+        automatically seen and saved inside the container.
     </p>
 
     <p>
-        For more information examine the <i>Dockerfile</i> in the <code class="highlighted-code">root</code> directory. To install Docker execute command:
+        For more information examine the <i>Dockerfile</i> in the <code class="highlighted-code">root</code> directory.
+        To install Docker execute command:
     </p>
 
     <code>make docker-install</code>
@@ -361,7 +363,8 @@
 
     <br><br>
 
-    <p>All other commands for starting the application and performing tests are the same like in a native environment.</p>
+    <p>All other commands for starting the application and performing tests are the same like in a native
+        environment.</p>
 
 </section>
 
@@ -369,13 +372,19 @@
     <h1>Directories</h1>
 
     <p>
-        AKDB system root directory consists of three folders and two files. Files contained within this directory are LICENSE file (contains the GNU General Public Licence) and a README file which in short describes installation and building of the application. Folders in the root directory and their purpose be explained next.
+        AKDB system root directory consists of three folders and two files. Files contained within this directory are
+        LICENSE file (contains the GNU General Public Licence) and a README file which in short describes installation
+        and building of the application. Folders in the root directory and their purpose be explained next.
     </p>
 
     <h2>Binaries (bin)</h2>
 
     <p>
-        Essential folder where the application compiles to and from where you can run it. It contains several files and another folder called <code class="highlighted-code">blobs</code> where all binary files are stored after running. The <code class="highlighted-code">blob</code> folder is created empty, and is created after the application is installed and started for the first time. Files in the <code class="highlighted-code">bin</code> folder are:
+        Essential folder where the application compiles to and from where you can run it. It contains several files and
+        another folder called <code class="highlighted-code">blobs</code> where all binary files are stored after
+        running. The <code class="highlighted-code">blob</code> folder is created empty, and is created after the
+        application is installed and started for the first time. Files in the <code class="highlighted-code">bin</code>
+        folder are:
     </p>
 
     <ul>
@@ -388,26 +397,33 @@
     <h2>Documentation (doc)</h2>
 
     <p>
-        Documentation for AKDB is created using <b>Doxygen</b>. It's a tool that generates documentation from comments in the source code.
+        Documentation for AKDB is created using <b>Doxygen</b>. It's a tool that generates documentation from comments
+        in the source code.
         The end result is a reference manual in PDF format. Doxygen can create this in HTML or LaTeX format.
     </p>
 
     <p>
-        In this folder there are two additional folders. The <code class="highlighted-code">HTML</code> folder contains the HTML and JS elements used for creation of the web version of the manual while the <code class="highlighted-code">LaTeX</code> folder contains <i>TeX</i> elements for creating PDF and RTF manuals.
+        In this folder there are two additional folders. The <code class="highlighted-code">HTML</code> folder contains
+        the HTML and JS elements used for creation of the web version of the manual while the <code
+            class="highlighted-code">LaTeX</code> folder contains <i>TeX</i> elements for creating PDF and RTF manuals.
     </p>
 
     <p>
-        A lengthy AKDB reference manual in the PDF format called <code class="highlighted-code"><b>refman</b></code> is located in the <code class="highlighted-code">doc</code> folder. It's highly recommended that you study it if you want to get a better insight into the system.
+        A lengthy AKDB reference manual in the PDF format called <code class="highlighted-code"><b>refman</b></code> is
+        located in the <code class="highlighted-code">doc</code> folder. It's highly recommended that you study it if
+        you want to get a better insight into the system.
     </p>
 
     <h2>Source (src)</h2>
 
     <p>
-        This folder containts the main source code for compiling and building the application. It has files required to start building process and subfolders where the source code files are located.
+        This folder containts the main source code for compiling and building the application. It has files required to
+        start building process and subfolders where the source code files are located.
     </p>
 
     <p>
-        Most of the source code files are written in C, expect Server and SWIG files which are written in Python and shell scripts.
+        Most of the source code files are written in C, expect Server and SWIG files which are written in Python and
+        shell scripts.
     </p>
 
     <p>
@@ -432,7 +448,8 @@
         </tr>
         <tr>
             <td>Auxiliary (<code>auxi</code>)</td>
-            <td>Debugger, Type converter, Constants, Dictionary, Parser, Memory Programmer, Observer, Test reporting</td>
+            <td>Debugger, Type converter, Constants, Dictionary, Parser, Memory Programmer, Observer, Test reporting
+            </td>
         </tr>
         <tr>
             <td>Disk manager (<code>dm</code>)</td>
@@ -440,7 +457,10 @@
         </tr>
         <tr>
             <td>File manager (<code>file</code>)</td>
-            <td>Database indexes (<code>bitmap</code>, <code>btree</code>, <code>hash</code>, <code>regular</code>), <code>blob</code> management, File input and output, File search, File sorting, File identification, Table managment, Sequences, File manager testing</td>
+            <td>Database indexes (<code>bitmap</code>, <code>btree</code>, <code>hash</code>, <code>regular</code>),
+                <code>blob</code> management, File input and output, File search, File sorting, File identification,
+                Table managment, Sequences, File manager testing
+            </td>
         </tr>
         <tr>
             <td>HTML (<code>html_files</code>)</td>
@@ -452,19 +472,29 @@
         </tr>
         <tr>
             <td>Optimization (<code>opti</code>)</td>
-            <td>Query optimization, Relational operations optimization (association, comutation, projection, selection)</td>
+            <td>Query optimization, Relational operations optimization (association, comutation, projection,
+                selection)
+            </td>
         </tr>
         <tr>
             <td>Recovery (<code>rec</code>)</td>
-            <td>Archive and redo log manager, Recovery tools for system crash, Database log in textual and binary form</td>
+            <td>Archive and redo log manager, Recovery tools for system crash, Database log in textual and binary form
+            </td>
         </tr>
         <tr>
             <td>Relational algebra (<code>rel</code>)</td>
-            <td>Operations that are used in queries and are essential for database functionality (aggregation, difference, expression check, intersect, natural Join, product, projection, selection, theta join, union)</td>
+            <td>Operations that are used in queries and are essential for database functionality (aggregation,
+                difference, expression check, intersect, natural Join, product, projection, selection, theta join,
+                union)
+            </td>
         </tr>
         <tr>
             <td>SQL commands (<code>sql</code>)</td>
-            <td>Responsible for executing SQL commands (<code>COMMAND</code>, <code>DROP</code>, <code>FUNCTION</code>, <code>PRIVILEGES</code>, <code>SELECT</code>, <code>TRIGGER</code>, <code>VIEW</code>, <code>BETWEEN</code>, <code>CHECK</code>, <code>CONSTRAINTS</code>, <code>NOT NULL</code>, <code>REFERENCE</code>, <code>UNIQUE</code>)</td>
+            <td>Responsible for executing SQL commands (<code>COMMAND</code>, <code>DROP</code>, <code>FUNCTION</code>,
+                <code>PRIVILEGES</code>, <code>SELECT</code>, <code>TRIGGER</code>, <code>VIEW</code>,
+                <code>BETWEEN</code>, <code>CHECK</code>, <code>CONSTRAINTS</code>, <code>NOT NULL</code>, <code>REFERENCE</code>,
+                <code>UNIQUE</code>)
+            </td>
         </tr>
         <tr>
             <td>Server (<code>sql</code>)</td>
@@ -490,7 +520,8 @@
     <h1>Testing</h1>
 
     <p>
-        Since the project is still in development, tests are required to ensure its stability and functionality. There are couple of dozen tests that check whether certain parts of the application work correctly.
+        Since the project is still in development, tests are required to ensure its stability and functionality. There
+        are couple of dozen tests that check whether certain parts of the application work correctly.
     </p>
 
     <p>After you've built the application, to run all tests simultaneously enter the command:</p>
@@ -500,7 +531,9 @@
     </code>
 
     <p>
-        On first use DB file will be initialized. In case it hangs press 1 and Enter (don't ask why). It also is not unusual for program to crash while running certain tests, because there are still some unfixed bugs that can cause system failure, but most tests work.
+        On first use DB file will be initialized. In case it hangs press 1 and Enter (don't ask why). It also is not
+        unusual for program to crash while running certain tests, because there are still some unfixed bugs that can
+        cause system failure, but most tests work.
     </p>
 
     <p>
@@ -514,23 +547,196 @@
         As of 21<sup>st</sup> of March 2018 they are numbered and divided into few categories:
     </p>
 
-    <h2>Auxiliary tests</h2>
+    <div class="test-container">
+        <h3>Auxiliary</h3>
+        <div class="test-set">
+            <p><span>1</span>Trajan</p>
+            <p><span>2</span>Observable</p>
+            <p><span>3</span>Observable pattern</p>
+        </div>
+    </div>
 
-    <table class="custom-table">
-        <tr>
-            <td>1</td>
-            <td>Trajan</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Observable</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Observable pattern</td>
-        </tr>
-    </table>
+    <div class="test-container">
+        <h3>Disk manager</h3>
+        <div class="test-set">
+            <p><span>4</span>Allocation bit</p>
+            <p><span>5</span>Allocation table</p>
+            <p><span>6</span>Thread safe block</p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>File system</h3>
+        <div class="test-set">
+            <p><span>7</span>ID</p>
+            <p><span>8</span>LO</p>
+            <p><span>9</span>Files <span class="test-badge">⎋</span></p>
+            <p><span>10</span>File IO <span class="test-badge">⎋</span></p>
+            <p><span>11</span>OP rename <span class="test-badge">⎋</span> <span class="test-badge">⁑</span></p>
+            <p><span>12</span>File sorting</p>
+            <p><span>13</span>File search</p>
+            <p><span>14</span>Sequence</p>
+            <p><span>15</span>OP table</p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Index</h3>
+        <div class="test-set">
+            <p><span>16</span>Bitmap <span class="test-badge">⎋</span></p>
+            <p><span>17</span>Binary tree <span class="test-badge">⎋</span></p>
+            <p><span>18</span>Hash <span class="test-badge">⎋</span></p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Memory manager</h3>
+        <div class="test-set">
+            <p><span>19</span>Memory manager</p>
+            <p><span>20</span>Block memory</p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Optimization</h3>
+        <div class="test-set">
+            <p><span>21</span>RE association</p>
+            <p><span>22</span>RE commutation</p>
+            <p><span>23</span>RE selection</p>
+            <p><span>24</span>RE projection</p>
+            <p><span>25</span>Query optimization</p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Relational operators</h3>
+        <div class="test-set">
+            <p><span>26</span>Union</p>
+            <p><span>27</span>Join <span class="test-badge">⎋</span></p>
+            <p><span>28</span>Product</p>
+            <p><span>29</span>Aggregation</p>
+            <p><span>30</span>Intersection</p>
+            <p><span>31</span>Selection</p>
+            <p><span>32</span>Selection pattern</p>
+            <p><span>33</span>Selection (redo)</p>
+            <p><span>34</span>Check expression</p>
+            <p><span>35</span>Difference</p>
+            <p><span>36</span>Projection</p>
+            <p><span>37</span>Theta join <span class="test-badge">⎋</span></p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>SQL tests</h3>
+        <div class="test-set">
+            <p><span>38</span><code>COMMAND</code></p>
+            <p><span>39</span><code>JOIN</code></p>
+            <p><span>40</span><code>VIEW</code></p>
+            <p><span>41</span><code>NULL</code></p>
+            <p><span>42</span><code>SELECT</code> <span class="test-badge">⎋</span></p>
+            <p><span>43</span>Trigger <span class="test-badge">⎋</span></p>
+            <p><span>44</span><code>UNIQUE</code> <span class="test-badge">⎋</span></p>
+            <p><span>45</span><code>FUNCTION</code></p>
+            <p><span>46</span>Privileges <span class="test-badge">⎋</span></p>
+            <p><span>47</span><code>REFERENCE</code> <span class="test-badge">⎋</span></p>
+            <p><span>48</span><code>BETWEEN</code></p>
+            <p><span>49</span><code>CHECK</code></p>
+            <p><span>50</span>Constraint names</p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Transactions</h3>
+        <div class="test-set">
+            <p><span>51</span>Transaction <span class="test-badge">⎋</span></p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h3>Recovery</h3>
+        <div class="test-set">
+            <p><span>52</span>Recovery <span class="test-badge">∞</span></p>
+        </div>
+    </div>
+
+    <h3 style="margin-bottom: 0;">Note</h3>
+    <p style="margin: 0;"><span class="test-badge">⎋</span> Crashes the application</p>
+    <p style="margin: 0;"><span class="test-badge">⁑</span> Performing this test twice in a row ruins the application </p>
+    <p style="margin: 0;"><span class="test-badge">∞</span> Takes forever to perform and you have to kill the app</p>
+
+    <br><br>
+
+    <p>
+        Show tests command won't enable you to perform those tests inside the application. For that, you need to use:
+    </p>
+
+    <code>./akdb test</code>
+
+    <p>
+        This will create the necessary test tables on which tests are run. To run a test enter a number of test you wish to run. If you want to run a particular test you can enter the following command in shell:
+    </p>
+
+    <code>./akdb test <i>[number]</i></code>
+
+    <p>
+        This will automatically execute the entered test and exit the application.
+    </p>
+
+    <h2>Client and server tests</h2>
+
+    <p>
+        In order to start these test you must position yourself in the <code>src/srv</code> directory and execute test commands by shell.
+    </p>
+
+    <p>Server test:</p>
+
+    <code>python server.py</code>
+
+    <p>Client test:</p>
+
+    <code>python akdb_cli.py</code>
+
+    <p>
+        It is also recommended to read the <code><b>README</b></code> file in the <code>src/srv</code> directory to get a more detailed overview of these tests.
+    </p>
+
+    <h2>Known issues</h2>
+
+    <p>
+        Issues that are being worked on are listed on GitHub and are generally updated every year.
+        They are mostly in Croatian.
+    </p>
+
+    <p>
+        You can contact prof. Markus Schatten if you have any questions or want to volunteer for work on AKDB.
+    </p>
+
+    <div class="paragraph-buttons">
+        <a class="a-btn" href="https://github.com/AILab-FOI/akdb/issues">GitHub issue page <div class="rot-45">-></div></a>
+        <a class="a-btn" href="mailto:mschatte@foi.hr">Contact prof. Schatten <div class="rot-45">-></div></a>
+    </div>
 
 </section>
+
+<footer>
+    <p>
+        <svg viewBox="420 140 300 100" xmlns="http://www.w3.org/2000/svg">
+            <path class="fe98193f-e474-41f3-9a23-91e8c227ffe0"
+                  d="M428.84,231.37a1.19,1.19,0,0,1-.06-.84l24.48-67.44q.36-.72.84-.72a.59.59,0,0,1,.42.18,1.37,1.37,0,0,1,.3.54l.84,2.28a1.59,1.59,0,0,1,0,1.68L442,204.85h26.76a1.4,1.4,0,0,1,1.44,1l.36,1.2.12.48a.77.77,0,0,1-.3.6,1.23,1.23,0,0,1-.78.24h-28.8l-8,22.2a1.87,1.87,0,0,1-.6,1,1.71,1.71,0,0,1-1,.24h-1.56C429.21,231.73,429,231.61,428.84,231.37Zm58.14.12a.7.7,0,0,1-.48-.48c-.08-.24-.17-.48-.24-.72l-28.32-78.72-.12-.48a.87.87,0,0,1,.3-.72,1.19,1.19,0,0,1,.78-.24h1.56q1,0,1.32,1.2l28.56,79.2.12.36a.81.81,0,0,1-.24.6,1,1,0,0,1-.72.24h-1.68A1.17,1.17,0,0,1,487,231.49Z"></path>
+            <path class="fe98193f-e474-41f3-9a23-91e8c227ffe0"
+                  d="M507.37,231.37a1.15,1.15,0,0,1-.36-.84v-79.2a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h1.32a1.06,1.06,0,0,1,1.2,1.2v79.2a1.27,1.27,0,0,1-.3.84,1.1,1.1,0,0,1-.9.36h-1.32A1.15,1.15,0,0,1,507.37,231.37Zm11.16-34q-.6,0-.6-1v-2.4a2.64,2.64,0,0,1,.6-1.44l34.56-41.28a4.25,4.25,0,0,1,1-1,2,2,0,0,1,1-.24h2.16a.69.69,0,0,1,.6,1.2l-38.52,45.6A1,1,0,0,1,518.53,197.41Zm36.72,33.12-21.84-37.92a1.84,1.84,0,0,1-.24-.72,1.3,1.3,0,0,1,.36-1l1-1.2a1.32,1.32,0,0,1,.84-.48,1,1,0,0,1,.84.6l23.4,40.68.12.48a.64.64,0,0,1-.72.72h-2A2,2,0,0,1,555.25,230.53Z"></path>
+            <path class="fe98193f-e474-41f3-9a23-91e8c227ffe0"
+                  d="M577.21,231.37a1.15,1.15,0,0,1-.36-.84v-79.2a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h1.32a1.06,1.06,0,0,1,1.2,1.2v79.2a1.27,1.27,0,0,1-.3.84,1.1,1.1,0,0,1-.9.36h-1.32A1.15,1.15,0,0,1,577.21,231.37Zm10.68,0a1.15,1.15,0,0,1-.36-.84v-1.08a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h13.32q17.64,0,22-13.2a41.28,41.28,0,0,0,1.68-8.58q.48-4.86.48-15.54t-.48-15.54a41.28,41.28,0,0,0-1.68-8.58q-4.32-13.2-22-13.2H588.73a1.23,1.23,0,0,1-1.2-1.2v-1.08a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h13.32q20.4,0,25.56,15.84a42.68,42.68,0,0,1,1.8,9q.48,4.92.48,16t-.48,16a42.68,42.68,0,0,1-1.8,9q-5.16,15.84-25.56,15.84H588.73A1.15,1.15,0,0,1,587.89,231.37Z"></path>
+            <path class="fe98193f-e474-41f3-9a23-91e8c227ffe0"
+                  d="M651.85,231.37a1.15,1.15,0,0,1-.36-.84v-79.2a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3H654a1.06,1.06,0,0,1,1.2,1.2v79.2a1.27,1.27,0,0,1-.3.84,1.1,1.1,0,0,1-.9.36h-1.32A1.15,1.15,0,0,1,651.85,231.37Zm42.36-46.92q-1.2-.48-.36-1.68a26,26,0,0,0,3.12-6.12,20.41,20.41,0,0,0,1.08-6.72,15.45,15.45,0,0,0-2.34-8.4,15.74,15.74,0,0,0-6.72-5.82,23.2,23.2,0,0,0-10.14-2.1H663.61a1.23,1.23,0,0,1-1.2-1.2v-1.08a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h15.24a26.63,26.63,0,0,1,12.48,2.7,18.81,18.81,0,0,1,7.8,7.26,19.76,19.76,0,0,1,2.64,10.08,23.47,23.47,0,0,1-4.8,14.52q-.48.72-1.56.24Zm-31.44,46.92a1.15,1.15,0,0,1-.36-.84v-1.08a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h15.72q9.84,0,14.94-4.8t5.1-13.32q0-8.52-5.16-13.38t-14.88-4.86H663.61a1.23,1.23,0,0,1-1.2-1.2v-1.08a1.1,1.1,0,0,1,.36-.9,1.27,1.27,0,0,1,.84-.3h15.72a28.41,28.41,0,0,1,12.84,2.7,18.62,18.62,0,0,1,8.16,7.62,22.91,22.91,0,0,1,2.76,11.4,22.57,22.57,0,0,1-2.76,11.34,18.73,18.73,0,0,1-8.16,7.56,28.41,28.41,0,0,1-12.84,2.7H663.61A1.15,1.15,0,0,1,662.77,231.37Z"></path>
+        </svg>
+    </p>
+    <p>Copyright Faculty of Organization and Informatics, 2019</p>
+</footer>
+
+<button class="custom-btn" id="scroll-top-btn"><span>↑</span> Scroll to top</button>
+<button class="custom-btn" id="theme-switch-btn"></button>
+
+
 </body>
 </html>
