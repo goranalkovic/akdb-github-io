@@ -232,7 +232,9 @@ nav ul li.active a {
         margin: 1rem 8vw 10rem;
     }
 
-    body {
-        background: lightgreen;
+    .h-split-right img:active {
+        border-radius: 4px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        transform: scale(1);
     }
 }

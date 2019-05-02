@@ -1,7 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
-    alert(window.innerWidth);
-
     let themeSwitch = document.getElementById('theme-switch');
 
     // Load last theme
