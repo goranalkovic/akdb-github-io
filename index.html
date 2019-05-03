@@ -10,8 +10,13 @@
 <body>
 
 <nav id="nav-menu">
-    <img alt="AK Database logo" class="header-logo" id="nav-logo" src="images/logo/AKDB_color.svg">
+        <img alt="AK Database logo" class="header-logo" id="nav-logo" src="images/logo/AKDB_color.svg">
 
+    <button id="mobile-menu-btn" class="custom-btn hide-on-desktop">
+        <svg height="100%" viewBox="0 0 1024 576" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1024,64L0,64L0,0L1024,0L1024,64ZM1024,576L0,576L0,512L1024,512L1024,576ZM1024,320L0,320L0,256L1024,256L1024,320Z"></path>
+            </svg>
+    </button>
     <ul>
         <li><a class="active" href="#about">About AKDB</a></li>
         <li><a href="#install">Installation</a></li>
@@ -48,8 +53,8 @@
         functional</strong>!
     </p>
     <div class="paragraph-buttons">
-        <a class="a-btn" href="#">Download from GitHub <div class="rot-45">-></div></a>
-        <a class="a-btn" href="#">Download from SourceForge <div class="rot-45">-></div></a>
+        <a class="a-btn" href="https://github.com/AILab-FOI/akdb">Download from GitHub <div class="rot-45">-></div></a>
+        <a class="a-btn" href="https://kalashnikovdb.sourceforge.net/">Download from SourceForge <div class="rot-45">-></div></a>
     </div>
 </section>
 
@@ -570,9 +575,9 @@
         <div class="test-set">
             <p><span>7</span>ID</p>
             <p><span>8</span>LO</p>
-            <p><span>9</span>Files <span class="test-badge">⎋</span></p>
-            <p><span>10</span>File IO <span class="test-badge">⎋</span></p>
-            <p><span>11</span>OP rename <span class="test-badge">⎋</span> <span class="test-badge">⁑</span></p>
+            <p><span>9</span>Files <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>10</span>File IO <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>11</span>OP rename <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span> <span class="test-badge has-tooltip" tooltipText="Performing this test twice in a row ruins the application">⁑</span></p>
             <p><span>12</span>File sorting</p>
             <p><span>13</span>File search</p>
             <p><span>14</span>Sequence</p>
@@ -583,9 +588,9 @@
     <div class="test-container">
         <h3>Index</h3>
         <div class="test-set">
-            <p><span>16</span>Bitmap <span class="test-badge">⎋</span></p>
-            <p><span>17</span>Binary tree <span class="test-badge">⎋</span></p>
-            <p><span>18</span>Hash <span class="test-badge">⎋</span></p>
+            <p><span>16</span>Bitmap <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>17</span>Binary tree <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>18</span>Hash <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
         </div>
     </div>
 
@@ -612,7 +617,7 @@
         <h3>Relational operators</h3>
         <div class="test-set">
             <p><span>26</span>Union</p>
-            <p><span>27</span>Join <span class="test-badge">⎋</span></p>
+            <p><span>27</span>Join <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
             <p><span>28</span>Product</p>
             <p><span>29</span>Aggregation</p>
             <p><span>30</span>Intersection</p>
@@ -622,7 +627,7 @@
             <p><span>34</span>Check expression</p>
             <p><span>35</span>Difference</p>
             <p><span>36</span>Projection</p>
-            <p><span>37</span>Theta join <span class="test-badge">⎋</span></p>
+            <p><span>37</span>Theta join <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
         </div>
     </div>
 
@@ -633,12 +638,12 @@
             <p><span>39</span><code>JOIN</code></p>
             <p><span>40</span><code>VIEW</code></p>
             <p><span>41</span><code>NULL</code></p>
-            <p><span>42</span><code>SELECT</code> <span class="test-badge">⎋</span></p>
-            <p><span>43</span>Trigger <span class="test-badge">⎋</span></p>
-            <p><span>44</span><code>UNIQUE</code> <span class="test-badge">⎋</span></p>
+            <p><span>42</span><code>SELECT</code> <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>43</span>Trigger <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>44</span><code>UNIQUE</code> <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
             <p><span>45</span><code>FUNCTION</code></p>
-            <p><span>46</span>Privileges <span class="test-badge">⎋</span></p>
-            <p><span>47</span><code>REFERENCE</code> <span class="test-badge">⎋</span></p>
+            <p><span>46</span>Privileges <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
+            <p><span>47</span><code>REFERENCE</code> <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
             <p><span>48</span><code>BETWEEN</code></p>
             <p><span>49</span><code>CHECK</code></p>
             <p><span>50</span>Constraint names</p>
@@ -648,14 +653,14 @@
     <div class="test-container">
         <h3>Transactions</h3>
         <div class="test-set">
-            <p><span>51</span>Transaction <span class="test-badge">⎋</span></p>
+            <p><span>51</span>Transaction <span class="test-badge has-tooltip" tooltipText="Crashes the application">⎋</span></p>
         </div>
     </div>
 
     <div class="test-container">
         <h3>Recovery</h3>
         <div class="test-set">
-            <p><span>52</span>Recovery <span class="test-badge">∞</span></p>
+            <p><span>52</span>Recovery <span class="test-badge has-tooltip" tooltipText="Takes forever to perform and you have to kill the app">∞</span></p>
         </div>
     </div>
 
@@ -734,8 +739,8 @@
     <p>Copyright Faculty of Organization and Informatics, 2019</p>
 </footer>
 
-<button class="custom-btn" id="scroll-top-btn"><span>↑</span> Scroll to top</button>
-<button class="custom-btn" id="theme-switch-btn"></button>
+<button class="custom-btn has-tooltip" id="scroll-top-btn" tooltipText="Scroll to top">↑</button>
+<button class="custom-btn has-tooltip" id="theme-switch-btn"></button>
 
 
 </body>

@@ -1,41 +1,63 @@
 'use strict';
 
-var section;
-var sections = {};
-var i = 0;
+let sections = {};
+let i = 0;
+
+let isMobileMenuToggled = false;
+let isMobile = false;
+
+window.addEventListener('resize', () => {
+    isMobile = window.innerWidth < 1080;
+
+    if (!isMobile) {
+        document.querySelector('nav ul').style.setProperty('height', '2rem');
+    } else {
+        correctMobileScroll();
+
+        document.querySelector('nav ul').style.setProperty('height', '0');
+        isMobileMenuToggled = false;
+        setMobileMenuBtnIcon();
+    }
+
+    refreshScrollspyItems();
+
+});
 
 window.addEventListener('scroll', () => {
-    let navMenu = document.getElementById('nav-menu');
-    let navLogo = document.getElementById('nav-logo');
-    let scrollTopBtn = document.getElementById('scroll-top-btn');
+    let condition = window.scrollY > 60;
 
-    if (this.scrollY > 100) {
-        navMenu.classList.add('nav-shadow');
-        navLogo.classList.add('img-size-scrolled');
-        navMenu.classList.add('nav-size-scrolled');
-        scrollTopBtn.classList.remove('scale-0');
-        scrollTopBtn.classList.add('scale-1');
-    } else {
-        navMenu.classList.remove('nav-shadow');
-        navLogo.classList.remove('img-size-scrolled');
-        navMenu.classList.remove('nav-size-scrolled');
-        scrollTopBtn.classList.add('scale-0');
-        scrollTopBtn.classList.remove('scale-1');
-    }
+    toggleClass(document.querySelector('#scroll-top-btn'), condition, 'scale-1', 'scale-0');
+    toggleClass(document.querySelector('#nav-menu'), condition, 'nav-shadow');
+    toggleClass(document.querySelector('#nav-logo'), condition, 'img-size-scrolled');
 
     //
 
-    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
     for (i in sections) {
         if (sections[i] <= scrollPosition) {
-            // if(document.querySelectorAll('.active').length > 0)
-            document.querySelector('.active').setAttribute('class', ' ');
+            document.querySelector('.active').setAttribute('class', '');
             document.querySelector('a[href*=' + i + ']').parentElement.setAttribute('class', 'active');
         }
     }
-
 });
+
+function refreshScrollspyItems() {
+    sections = {};
+    Array.prototype.forEach.call(document.querySelectorAll(".page-section"), function (e) {
+        sections[e.id] = e.offsetTop - (document.querySelector('nav').offsetHeight - 50);
+    });
+}
+
+function toggleClass(element, value, on, off) {
+    if (value) {
+        element.classList.add(on);
+        if (off !== '' || off === null) element.classList.remove(off);
+    } else {
+        if (off !== '' || off === null) element.classList.add(off);
+        element.classList.remove(on);
+    }
+}
 
 function scrollTo(selector) {
     document.querySelector(selector).scrollIntoView({
@@ -51,28 +73,63 @@ function scrollToPx(top, left) {
     });
 }
 
+function dismissMobileMenu(e) {
+    document.querySelector('nav ul').style.setProperty('height', '0');
+    isMobileMenuToggled = false;
+
+    setMobileMenuBtnIcon();
+}
+
+function setMobileMenuBtnIcon() {
+    document.querySelector('#mobile-menu-btn').innerHTML =
+        isMobileMenuToggled ?
+            `<svg viewBox="0 0 781 781" xmlns="http://www.w3.org/2000/svg" >
+              <path d="M436,390.5L781,736L736,781L390.5,436L45,781L0,736L345,390.5L0,45L45,0L390.5,345L736,0L781,45Z"></path>
+            </svg>`
+            :
+            `<svg viewBox="0 0 1024 576" xmlns="http://www.w3.org/2000/svg" >
+              <path d="M1024,64L0,64L0,0L1024,0L1024,64ZM1024,576L0,576L0,512L1024,512L1024,576ZM1024,320L0,320L0,256L1024,256L1024,320Z"></path>
+            </svg>`;
+}
+
+function correctMobileScroll() {
+    if (isMobile && window.scrollY < 280) {
+        scrollToPx(280, 0);
+    }
+}
+
 window.addEventListener('DOMContentLoaded', (event) => {
 
-    section = document.querySelectorAll(".page-section");
+    // Mobile detection and init tasks
 
-    let navMenu = document.querySelector('#nav-menu');
+    isMobile = window.innerWidth < 1080;
 
-    Array.prototype.forEach.call(section, function(e) {
-        sections[e.id] = e.offsetTop - navMenu.offsetHeight;
+    correctMobileScroll();
+
+    refreshScrollspyItems();
+
+    // Mobile menu button click/tap
+
+    document.querySelector('#mobile-menu-btn').addEventListener('click', () => {
+        if (isMobile) {
+            isMobileMenuToggled = !isMobileMenuToggled;
+            document.querySelector('.hide-on-desktop + ul').style.setProperty('height', isMobileMenuToggled ? '12rem' : '0');
+
+            setMobileMenuBtnIcon();
+        }
     });
 
+    // Mobile menu dismiss on link tap
 
-    //
-
-    let scrollTopBtn = document.getElementById('scroll-top-btn');
-
-    scrollTopBtn.addEventListener('click', () => {
-        scrollToPx(0, 0);
+    Array.prototype.forEach.call(document.querySelectorAll('nav ul li'), function (e) {
+        e.addEventListener('click', dismissMobileMenu);
     });
 
-    //
+    // 'Scroll to top' button click/tap
 
-    let themeSwitch = document.getElementById('theme-switch-btn');
+    document.getElementById('scroll-top-btn').addEventListener('click', () => {
+        scrollToPx(isMobile ? 280 : 0, 0);
+    });
 
     // Load last theme
 
@@ -80,22 +137,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Theme switch logic
 
-    themeSwitch.addEventListener('click', () => {
+    document.getElementById('theme-switch-btn').addEventListener('click', () => {
         let isDark = document.cookie.indexOf('dark') !== -1;
 
         switchTheme(!isDark);
 
         document.cookie = `theme=${isDark ? 'light' : 'dark'}; expires=Thu, 31 Dec 2099 12:00:00 UTC;`;
     });
-
 });
 
-
 function switchTheme(isDark) {
-    let root = document.documentElement;
-    let icon = document.getElementById('theme-switch-btn');
 
-    icon.innerHTML =
+    // Setting 'switch theme' button icon
+
+    document.getElementById('theme-switch-btn').innerHTML =
         isDark ?
             '<svg height="100%" viewBox="0 0 960 960" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
             '  <path d="M480,256C511,256 540.083,261.833 567.25,273.5C594.417,285.167 618.167,301.167 638.5,321.5C658.833,341.833 674.833,365.583 686.5,392.75C698.167,419.917 704,449 704,480C704,511 698.167,540.083 686.5,567.25C674.833,594.417 658.833,618.167 638.5,638.5C618.167,658.833 594.417,674.833 567.25,686.5C540.083,698.167 511,704 480,704C449,704 419.917,698.167 392.75,686.5C365.583,674.833 341.833,658.833 321.5,638.5C301.167,618.167 285.167,594.417 273.5,567.25C261.833,540.083 256,511 256,480C256,449 261.833,419.917 273.5,392.75C285.167,365.583 301.167,341.833 321.5,321.5C341.833,301.167 365.583,285.167 392.75,273.5C419.917,261.833 449,256 480,256ZM480,640C502,640 522.667,635.833 542,627.5C561.333,619.167 578.25,607.75 592.75,593.25C607.25,578.75 618.75,561.75 627.25,542.25C635.75,522.75 640,502 640,480C640,458 635.75,437.333 627.25,418C618.75,398.667 607.25,381.75 592.75,367.25C578.25,352.75 561.333,341.25 542,332.75C522.667,324.25 502,320 480,320C458,320 437.25,324.25 417.75,332.75C398.25,341.25 381.25,352.75 366.75,367.25C352.25,381.75 340.833,398.667 332.5,418C324.167,437.333 320,458 320,480C320,502 324.167,522.75 332.5,542.25C340.833,561.75 352.25,578.75 366.75,593.25C381.25,607.75 398.25,619.167 417.75,627.5C437.25,635.833 458,640 480,640ZM512,192L448,192L448,0L512,0ZM448,768L512,768L512,960L448,960ZM960,448L960,512L768,512L768,448ZM192,512L0,512L0,448L192,448ZM253.5,299L118,163L163,118L299,253.5ZM706.5,661L842,797L797,842L661,706.5ZM706.5,299L661,253.5L797,118L842,163ZM253.5,661L299,706.5L163,842L118,797Z">\n' +
@@ -108,20 +163,32 @@ function switchTheme(isDark) {
             '</svg>';
 
 
+    // Setting 'switch theme' button tooltip
+
+    document.querySelector('#theme-switch-btn').setAttribute('tooltipText', isDark ? 'Light mode' : 'Dark mode');
+
+    // Setting theme colors
+
+    let root = document.documentElement;
+
     if (isDark) {
-        root.style.setProperty('--primary-color', '#ad1457');
+        root.style.setProperty('--primary-color', 'rgb(173, 20, 87)');
+        root.style.setProperty('--primary-color-values', '173, 20, 87');
         root.style.setProperty('--primary-foreground', '#fff');
         root.style.setProperty('--body-text', '#eee');
         root.style.setProperty('--body-text-light', 'rgba(238, 238, 238, 0.5)');
+        root.style.setProperty('--body-text-values', '238, 238, 238');
         root.style.setProperty('--background', '#141414');
         root.style.setProperty('--code-bg', '#242424');
         root.style.setProperty('--code-fg', '#eee');
-        root.style.setProperty('--shadow-color', 'rgba(120, 120, 120, 0.2)');
-        root.style.setProperty('--shadow-color-dark', 'rgba(120, 120, 120, 0.4)');
+        root.style.setProperty('--shadow-color', 'rgba(80, 80, 80, 0.3)');
+        root.style.setProperty('--shadow-color-dark', 'rgba(80, 80, 80, 0.5)');
     } else {
-        root.style.setProperty('--primary-color', '#ad1457');
+        root.style.setProperty('--primary-color', 'rgb(173, 20, 87)');
+        root.style.setProperty('--primary-color-values', '173, 20, 87');
         root.style.setProperty('--primary-foreground', '#fff');
         root.style.setProperty('--body-text', '#222');
+        root.style.setProperty('--body-text-values', '34, 34, 34');
         root.style.setProperty('--body-text-light', 'rgba(34, 34, 34, 0.5)');
         root.style.setProperty('--background', '#fff');
         root.style.setProperty('--code-bg', '#f1f1f1');
